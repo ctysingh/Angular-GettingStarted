@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ProductListComponent } from './products/product-list.component';
 
 @Component({
   selector: 'pm-root',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Angular: Getting Started';
+  pageTitle:string = 'Acme Product Management';
 }
