@@ -2,5 +2,9 @@
   <div class="panel-heading" *ngIf='product'>
     {{pageTitle + ':' + product.productName}}
   </div>
-  product-detail works!
+  <div class="panel panel-footer">
+    <a class="btn btn-default" (click)='onBack()' style="width:80px" >
+      <i class="glyphicon glyphicon-chevron-left"></i> Back
+    </a>
+  </div>
 </div>
