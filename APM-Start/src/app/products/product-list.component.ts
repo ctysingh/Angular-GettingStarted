@@ -16,6 +16,7 @@ export class ProductListComponent implements OnInit{
     imageWidth:number=50;
     imageMargin:number=2;
     showImage:boolean=false;
+    errorMessage:string;
 
     _listFilter:string;
     
@@ -44,7 +45,7 @@ export class ProductListComponent implements OnInit{
            product.productName.toLocaleLowerCase().indexOf(filterBy) != -1);
     }
     onRatingClicked(message:string):void{
-        this.pageTitle = 'Product List' + message;
+        this.pageTitle = 'Product List' +' ' + message;
     }
     toggleImage():void{
         this.showImage = !this.showImage;
@@ -52,7 +53,14 @@ export class ProductListComponent implements OnInit{
 
     ngOnInit(): void {
         //console.log("OnInit method");
-        this.products = this._productService.getProducts();
-        this.filteredProducts = this.products;
+         this._productService.getProducts()
+              .subscribe(
+                  products => {
+                      this.products = products;
+                      this.filteredProducts = this.products;
+                    },
+                  error => this.errorMessage = <any>error
+              );
+        
     }
 }
